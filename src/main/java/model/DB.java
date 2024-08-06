@@ -6,14 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DB {
 	Connection connection;
 	Statement statement;
 
 	public DB(String dbName) {
-		//String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a.singapore-postgres.render.com";
-		String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a";
+		String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a.singapore-postgres.render.com";
+		//String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a";
         String dbPort = "5432";
         String dbUser = "mydb_mb29_user";
         String dbPassword = "kF71i5sudVRIC3UiGkHqPbvRVAhfGUgT";
@@ -49,8 +50,23 @@ public class DB {
 		return passWord;
 	}
 
+	public void updateStock(List<Product> productList) {
+		try {
+			for(Product product : productList) {
+				String sql = "UPDATE public.productlist\n"
+						+ "	SET \"STOCK\"= \"STOCK\" - 1\n"
+						+ "	WHERE \"ID\" = '"+ product.getId() +"';";
+				statement.executeUpdate(sql);
+			}
+		} catch (Exception e) {
+			// TODO 自動生成された catch ブロック
+			e.printStackTrace();
+		}
+		
+	}
+	
 	public ArrayList<Product> getProductList() {
-		String sql = "SELECT * FROM \"productlist\";";
+		String sql = "SELECT * FROM \"productlist\" WHERE \"STOCK\" > 0 ORDER BY \"ID\" ASC;";
 		ArrayList<Product> productList = new ArrayList<Product>();
 		try {
 			ResultSet resultSet = statement.executeQuery(sql);
@@ -58,7 +74,8 @@ public class DB {
 				String id = resultSet.getString("ID");
 				String name = resultSet.getString("NAME");
 				int price = resultSet.getInt("PRICE");
-				productList.add(new Product(id, name, price));
+				int stock = resultSet.getInt("STOCK");
+				productList.add(new Product(id, name, price,stock));
 			}
 
 		} catch (SQLException e) {

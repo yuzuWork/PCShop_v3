@@ -51,6 +51,13 @@ public class Store {
 	public void remove(int index) {
 		listProd.remove(index);
 	}
+	
+	/**
+	 * 商品を更新する
+	 */
+	public void update(List<Product> listProd) {
+		this.listProd = listProd;
+	}
 
 	/**
 	 * すべての商品を除去する

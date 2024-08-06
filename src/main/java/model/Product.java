@@ -13,6 +13,10 @@ public class Product {
 	 * 価格
 	 */
 	private int price;
+	/**
+	 * 在庫
+	 */
+	private int stock;
 
 	/**
 	 * フィールド初期化コンストラクタ
@@ -20,10 +24,11 @@ public class Product {
 	 * @param name
 	 * @param price
 	 */
-	public Product(String id, String name, int price) {
+	public Product(String id, String name, int price, int stock) {
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.stock = stock;
 	}
 
 	/**
@@ -45,6 +50,12 @@ public class Product {
 	 */
 	public int getPrice() {
 		return price;
+	}
+	/**
+	 * @return stock
+	 */
+	public int getStock() {
+		return stock;
 	}
 
 	/**

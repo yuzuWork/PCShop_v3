@@ -14,7 +14,7 @@
 			<hr>
 			ユーザID：<%=cartHdr.getUserId() %>
 			<hr>
-			<a href="select.jsp">商品選択</a>
+			<a href="backcart-servlet">商品選択</a>
 			<a href="cart.jsp">カート内一覧</a>
 			<a href="logout-servlet">ログアウト</a>
 			<hr>

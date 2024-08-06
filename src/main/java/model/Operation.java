@@ -49,7 +49,20 @@ public class Operation {
 		db.Close();
 		return store;
 	}
-
+	
+	/**
+	 * 店舗情報の更新
+	 * @pram session
+	 */
+	public void updateStore(HttpSession session) {
+		Store store = (Store) session.getAttribute("store");
+		if (store != null) {
+			DB db = new DB("mydb");
+			store.update(db.getProductList());
+			db.Close();
+			session.setAttribute("store", store);
+		}
+	}
 	/**
 	 * 商品追加処理
 	 * @pram idx
@@ -84,6 +97,8 @@ public class Operation {
 	public void pay(HttpSession session) {
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (cart != null) {
+			DB db = new DB("mydb");
+			db.updateStock(cart.getListProd());
 			session.setAttribute("pay", cart);
 			Cart newCart = new Cart(cart.getUserId(), new ArrayList<Product>());
 			session.setAttribute("cart", newCart);

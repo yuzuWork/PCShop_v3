@@ -2,18 +2,18 @@
 
 body {
 	font-family: BIZ UDPゴシック;
-	background-color:  #98fb98;
+	background-color:  skyblue;
 	text-align: center;
 }
 
 h1 {
 	font-size: 32px;
-	color: green;
+	color: white;
 }
 
 h2 {
 	font-size: 28px;
-	background-color: green;
+	background-color: deepskyblue;
 	color: white;
 }
 
@@ -37,8 +37,10 @@ table {
 th {
 	border: 1px solid #5e696c;
 	text-align: center;
-	background-color: #3cd371;
+	/*background-color: #3cd371;*/
+	background-color: dodgerblue;
 	height: 32px;
+	color: white;
 }
 
 td {
@@ -48,11 +50,11 @@ td {
 }
 
 .select-list {
-	background-color: #eee8aa;
-}
-.cart-list {
 	background-color: #afeeee;
 }
-.pay-list {
+.cart-list {
 	background-color: #ffe4e1;
+}
+.pay-list {
+	background-color: palegreen;
 }
