@@ -13,8 +13,8 @@ public class DB {
 	Statement statement;
 
 	public DB(String dbName) {
-		String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a.singapore-postgres.render.com";
-		//String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a";
+		//String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a.singapore-postgres.render.com";
+		String dbHost = "dpg-cqm9ma1u0jms73fo9jk0-a";
         String dbPort = "5432";
         String dbUser = "mydb_mb29_user";
         String dbPassword = "kF71i5sudVRIC3UiGkHqPbvRVAhfGUgT";
